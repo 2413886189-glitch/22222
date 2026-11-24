@@ -133,7 +133,7 @@ public class SnakeGame {
         private static final Color ACCENT_CYAN = new Color(56, 189, 248);
 
         private final Random random = new Random();
-        private final Preferences prefs = Preferences.userNodeForPackage(SnakeGame.class);
+        private final Preferences prefs;
         private static final String PREF_HIGH_SCORE = "snake_high_score";
 
         private final LinkedList<Point> snake = new LinkedList<Point>();
@@ -160,7 +160,14 @@ public class SnakeGame {
             setBackground(BG_HUD);
             setFocusable(true);
 
-            highScore = prefs.getInt(PREF_HIGH_SCORE, 0);
+            Preferences loadedPrefs = null;
+            try {
+                loadedPrefs = Preferences.userNodeForPackage(SnakeGame.class);
+                highScore = loadedPrefs.getInt(PREF_HIGH_SCORE, 0);
+            } catch (Exception ignored) {
+                highScore = 0;
+            }
+            this.prefs = loadedPrefs;
             resetGame(false);
 
             timer = new Timer(difficulty.baseDelayMs, this);
@@ -376,7 +383,12 @@ public class SnakeGame {
         private void updateHighScore() {
             if (score > highScore) {
                 highScore = score;
-                prefs.putInt(PREF_HIGH_SCORE, highScore);
+                if (prefs != null) {
+                    try {
+                        prefs.putInt(PREF_HIGH_SCORE, highScore);
+                    } catch (Exception ignored) {
+                    }
+                }
             }
         }
 
