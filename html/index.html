@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="zay 的个人主页，专业是计算机技术。">
+  <title>zay 的个人主页</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #19233a;
+      --muted: #526079;
+      --accent: #273ec7;
+      --border: #e0e6f4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: clamp(1rem, 5vw, 4rem);
+      background: #f2f5fc;
+      color: var(--ink);
+      font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    .profile {
+      width: min(100%, 58rem);
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      padding: clamp(1rem, 3vw, 1.75rem);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      background: #fff;
+      box-shadow: 0 1.25rem 4rem rgb(31 51 111 / 8%);
+    }
+
+    .introduction {
+      align-self: center;
+      padding: clamp(0.5rem, 2.5vw, 1.75rem);
+    }
+
+    h1 {
+      margin: 0;
+      font-weight: 750;
+      line-height: 1.12;
+    }
+
+    .greeting {
+      display: block;
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    }
+
+    .name {
+      display: block;
+      margin-top: 0.15em;
+      color: var(--accent);
+      font-size: clamp(4rem, 10vw, 7rem);
+      letter-spacing: -0.075em;
+      line-height: 1;
+    }
+
+    .welcome {
+      margin: 1.5rem 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 1rem;
+      margin: 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .details dt {
+      color: var(--muted);
+    }
+
+    .details dd {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .monogram {
+      min-height: 22rem;
+      display: grid;
+      place-items: center;
+      border-radius: 1.25rem;
+      background-color: #283dc3;
+      background-image:
+        linear-gradient(rgb(255 255 255 / 13%) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(255 255 255 / 13%) 1px, transparent 1px);
+      background-position: center;
+      background-size: 2rem 2rem;
+      color: #fff;
+      font-size: clamp(7rem, 16vw, 13rem);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    @media (max-width: 40rem) {
+      .profile {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .monogram {
+        min-height: 11rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="profile">
+    <div class="introduction">
+      <h1>
+        <span class="greeting">你好，我是</span>
+        <span class="name" lang="en">zay</span>
+      </h1>
+      <p class="welcome">欢迎来到我的个人主页，很高兴认识你！</p>
+      <dl class="details">
+        <dt>专业</dt>
+        <dd>计算机技术</dd>
+      </dl>
+    </div>
+    <div class="monogram" aria-hidden="true">Z</div>
+  </main>
+</body>
+</html>
